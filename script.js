@@ -1,72 +1,33 @@
 document.addEventListener("DOMContentLoaded", function() {
     const container = document.querySelector(".learning-container");
-    let items = Array.from(container.children);
-    isAnimating = false;
+    const items = Array.from(container.children);
+    let currentIndex = 2; 
 
-    function updateCenter() {
-        items.forEach(item => item.classList.remove("center"));
-        const centerIndex = Math.floor(items.length / 2);
-        items[centerIndex].classList.add("center");
+    function updateGallery() {
+        items.forEach(item => item.classList.remove("left", "center", "right"));
+
+     
+        const prevIndex = (currentIndex - 1 + items.length) % items.length;
+        const nextIndex = (currentIndex + 1) % items.length;
+
+        items[prevIndex].classList.add("left");
+        items[currentIndex].classList.add("center");
+        items[nextIndex].classList.add("right");
     }
 
-    function shiftLeft() {
-        if (isAnimating) return;
-        isAnimating = true;
-
-        items.forEach(item => {
-            item.style.transform = "translateX(-100%)";
-    });
-
-    setTimeout(() => {
-        const firstItem = items.shift();
-        items.push(firstItem);
-        container.appendChild(firstItem);
-        updateItems();
-        items.forEach(item => item.style.transform = ""); 
-        updateCenter();
-        isAnimating = false;
-    }, 600); 
-}
-
-function shiftRight() {
-    if (isAnimating) return;
-    isAnimating = true;
-
-
-    items.forEach(item => {
-        item.style.transform = "translateX(100%)"; // slide right
-    });
-
-    setTimeout(() => {
-        const lastItem = items.pop();
-        items.unshift(lastItem);
-        container.insertBefore(lastItem, container.firstChild);
-        updateItems();
-        items.forEach(item => item.style.transform = ""); 
-        updateCenter();
-        isAnimating = false;
-    }, 600);
-}
-
-    function updateItems() {
-        items = Array.from(container.children);
+    function movePrevious() {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        updateGallery();
     }
 
-    container.addEventListener("click", function(event) {
-        const clickedItem = event.target.closest("div");
-        if (clickedItem && container.contains(clickedItem)) {
-            updateItems();
-            const index = items.indexOf(clickedItem);
-            const centerIndex = Math.floor(items.length / 2);
+    function moveNext() {
+        currentIndex = (currentIndex + 1) % items.length; 
+        updateGallery();
+    }
 
-            
-            if (index < centerIndex) {
-                shiftRight();
-            } else if (index > centerIndex) {
-                shiftLeft(); 
-            }
-        }
-    });
+    document.querySelector(".prev-btn").addEventListener("click", movePrevious);
+    document.querySelector(".next-btn").addEventListener("click", moveNext);
 
-    updateCenter();
+ 
+    updateGallery();
 });

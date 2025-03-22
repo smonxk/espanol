@@ -11,33 +11,39 @@
   <body>
     <h1>Colors</h1>
     <h2>Learn the colors in Spanish!</h2>
-    <br><br>
+    <br>
     <div class="learning-container">
-      <div>
+      <div class="container-color">
         <h2 class="color-title" id="red">Rojo</h2>
         <img src="./assets/images/red.png" alt="red" />
       </div>
 
-      <div>
+      <div class="container-color">
         <h2 class="color-title" id="blue">Azul</h2>
         <img src="./assets/images/blue.png" alt="blue" />
       </div>
   
-      <div>
+      <div class="container-color">
         <h2 class="color-title" id="orange">Anaranjado</h2>
         <img src="./assets/images/orange.png" alt="orange" />
       </div>
   
-      <div>
+      <div class="container-color">
         <h2 class="color-title" id="green">Verde</h2>
         <img src="./assets/images/green.png" alt="green" />
       </div>
   
-      <div>
+      <div class="container-color">
         <h2 class="color-title" id="yellow">Amarillo</h2>
         <img src="./assets/images/yellow.png" alt="yellow" />
       </div>
     </div>
+
+    <a class="prev-btn" onclick="movePrevious()">&#10094;</a>
+    <a class="next-btn" onclick="moveNext()">&#10095;</a>
+    <br>
+    <a class="test-btn" onclick="startTest()">Test me!</a>
+
     <script src="./script.js"></script> 
   </body>
 </html>

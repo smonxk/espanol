@@ -159,6 +159,7 @@ img {
     cursor: grab;
 }
 
+
 .test-text {
     position: absolute;
     cursor: grab;
@@ -194,4 +195,43 @@ img {
 
 .test-container > * {
     position: absolute;
+}
+
+.correct-icon {
+    position: absolute;
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
+    z-index: 10;
+    height: 50px;
+    width: 50px;
+    border: none;
+}
+
+.correct-icon.animate {
+    animation: scaleUpDown 1s ease-in-out forwards;
+}
+
+@keyframes scaleUpDown {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5); 
+    }
+    100% {
+        transform: scale(0); 
+    }
+}
+
+@keyframes scaleDown {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.scale-down {
+    animation: scaleDown 0.5s ease-in-out forwards;
 }

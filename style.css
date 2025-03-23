@@ -21,7 +21,6 @@ body {
 
 }
 
-
 .learning-container.squish {
     transform: scale(0);
     opacity: 0;
@@ -146,3 +145,53 @@ img {
     to {transform: scale(1.2);}
 }
 
+.test-btn.squish {
+    opacity: 0;
+    transition: opacity 1.6s ease-in-out;
+}
+
+.test-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 25%;
+    border: white 10px solid;
+    position: absolute;
+    cursor: grab;
+}
+
+.test-text {
+    position: absolute;
+    cursor: grab;
+}
+
+.test-container {   
+    width: 55vw;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    
+    position: absolute;
+    top: 18.3%;
+    right: 22.5%;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes bounce-in {
+    0% { transform: scale(0);}
+    60% {transform: scale(1.4);}
+    100% {transform: scale(1);}
+}
+
+.bounce-in {
+    animation: bounce-in 0.6s ease-out forwards;
+    transform-origin: center; 
+}
+
+.test-container > * {
+    position: absolute;
+}

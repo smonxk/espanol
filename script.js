@@ -31,3 +31,22 @@ document.addEventListener("DOMContentLoaded", function() {
  
     updateGallery();
 });
+
+
+function startTest() {
+    const container = document.querySelector(".learning-container");
+    const items = document.querySelectorAll(".left, .right");
+    const centerItem = document.querySelector(".center");
+    const buttons = document.querySelectorAll(".next-btn, .prev-btn");
+
+    setTimeout(() => {
+        items.forEach(item => item.classList.add("squish"));
+        buttons.forEach(button => button.classList.add("squish"));
+    }, 400);  
+    
+    setTimeout(() => {
+        items.forEach(item => item.style.display = "none");
+        buttons.forEach(button => button.style.display = "none");
+        container.classList.add("squish");
+    }, 400 + 600); 
+}

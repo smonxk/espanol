@@ -5,7 +5,7 @@ body {
     text-align: center;
     background-color: rgb(138, 194, 145);
     color: white;
-    font-family: 'Slackey';
+    font-family: 'Slackey', sans-serif;
 }
 
 .learning-container {
@@ -17,12 +17,20 @@ body {
     height: 60vh;
     justify-content: center;
     align-items: center;
-    gap: 50px
+    gap: 50px;
+
+}
+
+
+.learning-container.squish {
+    transform: scale(0);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.6s ease-in-out;
 }
 
 .learning-container div {
     position: absolute;
-    transition: all 0.5s ease-in-out;
+    transition: opacity 0.2s ease-in, transform 0.5s ease-in-out;
     opacity: 0.5;
     transform: scale(0.8);
 }
@@ -86,7 +94,7 @@ img {
     font-weight: bold;
     font-size: 18px;
     top: 52%;
-    transition: 0.6s ease;
+    transition: all 0.6s ease-in-out
 }
 
 .next-btn {
@@ -97,15 +105,44 @@ img {
     left: 15%;
 }
 
+.next-btn.squish {
+    right: 50%; 
+    left: auto; 
+}
+
+.prev-btn.squish { 
+    left: 50%; 
+    right: auto; 
+}
+
+.left.squish {
+    left: 53%;
+    right: auto;
+    transition: all 0.6s ease-in-out
+}
+
+.right.squish {
+    right: 53%;
+    left: auto;
+    transition: all 0.6s ease-in-out
+}
+
 .test-btn {
     background-color: orange;
-    font-size: 20px;
+    font-size: 16pt;
     padding: 10px 20px 10px 20px;
     border-radius: 25px;
     border: white 4px solid;
     cursor: pointer;
     width: 10vw;
     user-select: none;
-    position: relative;
-    top: 90%;
+    position: absolute;
+    top: 87%;
+    left: 44%;
+    animation: bounce 0.5s infinite alternate;
 }
+
+@keyframes bounce {
+    to {transform: scale(1.2);}
+}
+
